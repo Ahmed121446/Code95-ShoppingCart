@@ -10,12 +10,12 @@
 <h1>Add Item Page</h1>
 
 
-<form action="/Item/AddItem" method="post">
+<form action="/Item/AddItem" enctype="multipart/form-data" method="post">
 	{{csrf_field()}}
 
 	<div class="form-group">
-		<label for="image_path">Image Path :</label>
-		<input type="text" name="image_path" class="form-control" placeholder="https://image.jpg">
+		<label for="Image">Item Image :</label>
+		<input type="file" name="Image" class="form-control">
 	</div>
 	
 	<div class="form-group">

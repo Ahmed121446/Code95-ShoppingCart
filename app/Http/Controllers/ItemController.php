@@ -25,20 +25,28 @@ class ItemController extends Controller
 
     public function store(Request $request){
     	$this->validate($request,[
-    		'image_path' => 'required',
-    		'item_title' => 'required|max:20',
-    		'item_desc' => 'required|min:5',
-    		'item_price' => 'required|numeric'
-    	]);
+            'Image'  => 'required',
+            'item_title' => 'required|max:20',
+            'item_desc' => 'required|min:5',
+            'item_price' => 'required|numeric'
+        ]);
 
-    	$image_path =  $request['image_path'];
-    	$item_title =  $request['item_title'];
-    	$item_desc =  $request['item_desc'];
-    	$item_price =  $request['item_price'];
 
-    	$item = new Item();
+        //get image name
+        $filename = $_FILES['Image']['name'];
+        
 
-    	$item->image_path = $image_path ;
+        
+        $Image_Name =  $filename;
+        $item_title =  $request['item_title'];
+        $item_desc =  $request['item_desc'];
+        $item_price =  $request['item_price'];
+
+        $Image =  $request['Image']->storeAs('public/Itemsimages',$filename);
+
+        $item = new Item();
+
+        $item->image_path = $Image_Name ;
     	$item->name = $item_title ;
     	$item->desc = $item_desc ;
     	$item->price = $item_price ;
@@ -54,7 +62,7 @@ class ItemController extends Controller
 
     public function viewItems(){
         //eager loading is better
-        $AllItems = Item::with('User')->get();
+        $AllItems = Item::all();
 
         //lazy loading
        // $AllItems = Item::all();

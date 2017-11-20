@@ -18,11 +18,16 @@ Welcome page
 <div class="jumbotron">
   <div class="row">
     @foreach ($item as $item_info)
+    
+    <?php
+      $image = asset('storage/Itemsimages/'.$item_info->image_path);
+    ?>
 
+    
 
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-        <img src="{{$item_info->image_path }}" alt="Item Image">
+        <img src="{{$image }}" alt="Item Image">
         <div class="caption">
           <h3>{{$item_info->name }}</h3>
           <p>{{$item_info->desc }}</p>
