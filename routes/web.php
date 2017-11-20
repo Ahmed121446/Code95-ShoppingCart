@@ -33,6 +33,8 @@ Route::group(['prefix' => 'Item'], function() {
 		Route::get('/AddToCart/{id}', 'ShoppingCartController@AddToCart' );
 		//remove 1 item from ShoppingCart
 		Route::get('/Remove1FromCart/{id}', 'ShoppingCartController@Remove1' );
+		//remove Selected item from ShoppingCart
+		Route::get('/RemoveItem/{id}', 'ShoppingCartController@RemoveAll' );
 
 		//send mail to user when press buy button in shopping cart
 		Route::get('/ShoppingCart/Buy', 'ShoppingCartController@Buy_Items_In_ShoppingCart' );

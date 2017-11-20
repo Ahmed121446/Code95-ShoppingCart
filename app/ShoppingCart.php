@@ -66,5 +66,12 @@ class ShoppingCart
 
    }
 
+   public function RemoveItem($id){
+      $this->TotalPrice         -=  $this->Items[$id]['Price'] ;
+      $this->TotalQuantity      -= $this->Items[$id]['HowMany'];
+
+       unset($this->Items[$id]);
+   }
+
    
 }

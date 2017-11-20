@@ -89,7 +89,22 @@ class ShoppingCartController extends Controller
         return redirect()->route('ShoppingCart');
     }
 
+     //remove Selected item from shopping cart
+    public function RemoveAll($id){
+        $Item = Item::find($id);
+        $OldCart = Session::has('shoppingcart') ? Session::get('shoppingcart') : null ;
+        //cart is the object if the  ShoppingCart ======> session
+        $cart = new ShoppingCart($OldCart );
+        $cart->RemoveItem($Item->id);
 
+        
+        if ($cart->TotalQuantity >= 1 ) {
+            Session::put('shoppingcart',$cart);  
+        }else {
+            Session::forget('shoppingcart');
+        }
+        return redirect()->route('ShoppingCart');
+    }
 
 
 
