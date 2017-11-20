@@ -103,7 +103,7 @@ class ShoppingCartController extends Controller
         }else {
             Session::forget('shoppingcart');
         }
-        return redirect()->route('ShoppingCart');
+        return redirect()->route('ShoppingCart');  
     }
 
 

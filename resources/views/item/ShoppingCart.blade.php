@@ -54,7 +54,7 @@ Shopping Cart
 							<button class="btn btn-danger ItemRemoveButton" type="button" data-ItemId="{{$item['Item']['id']}}" > Remove </button>
 							</a>
 							<a href="/Item/RemoveItem/{{$item['Item']['id']}}">
-							<button class="btn btn-danger ItemRemoveButton" type="button" data-ItemId="{{$item['Item']['id']}}" > Remove All </button>
+							<button class="btn btn-danger ItemRemoveButton" type="button" data-ItemId="{{$item['Item']['id']}}" > Remove All </button> 
 							</a>
 						</div>
 

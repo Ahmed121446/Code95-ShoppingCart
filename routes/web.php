@@ -26,7 +26,7 @@ Route::group(['prefix' => 'User'], function() {
 Route::group(['prefix' => 'Item'], function() {
 
 		// view AddItem page ( form )
-		Route::get('/AddItem', 'ItemController@AddItem' );
+		Route::get('/AddItem', 'ItemController@AddItem' ); 
 		//view ShoppingCart
 		Route::get('/ShoppingCart', 'ShoppingCartController@Show' )->name('ShoppingCart');
 		//add items to ShoppingCart
