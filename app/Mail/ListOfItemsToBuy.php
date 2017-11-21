@@ -11,8 +11,7 @@ class ListOfItemsToBuy extends Mailable
 {
     use Queueable, SerializesModels;
 
-     public $user ;
-
+    public $user ;
     public $ShoppingCartItems ;
     public $CardPrice_and_Quantity ;
 

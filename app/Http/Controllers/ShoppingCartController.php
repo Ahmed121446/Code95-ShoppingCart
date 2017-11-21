@@ -9,6 +9,7 @@ use App\ShoppingCart;
 use App\Item;
 use Session;
 use App\Mail\ListOfItemsToBuy;
+use App\Events\BuyItems;
 
 
 class ShoppingCartController extends Controller
@@ -110,18 +111,17 @@ class ShoppingCartController extends Controller
 
      //Buy button
      public function Buy_Items_In_ShoppingCart(){
-     	//get user email
-     	if (Session::has('shoppingcart')) {
-     		$oldshoppingcart = Session::get('shoppingcart');
+        //send mail by event and listener
+        if (Session::has('shoppingcart')) {
+            $oldshoppingcart = Session::get('shoppingcart');
             $cart = new ShoppingCart($oldshoppingcart);
             $items_in_cart =  $cart->Items;
-     		
-     		$User_Email = Auth::user()->email ;
-     		\Mail::to($User_Email)->send(new ListOfItemsToBuy(Auth::user(),$items_in_cart,$cart));
-     	}
+            $user = Auth::user();
 
-     	return redirect()->back();
-     	
+            //fire event  to send mail to user with items in shopping cart
+            event(new BuyItems($user,$items_in_cart,$cart));
+        }
+        return redirect()->back();
      }
 
 

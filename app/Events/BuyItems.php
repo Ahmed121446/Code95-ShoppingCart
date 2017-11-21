@@ -10,18 +10,20 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
+use App\User;
+
 class BuyItems
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $user;
+    public $items_in_cart;
+    public $cart;
+    public function __construct(User $user , $items_in_cart,$cart)
     {
-        //
+        $this->user = $user;
+        $this->items_in_cart = $items_in_cart;
+        $this->cart = $cart;
     }
 
     /**
