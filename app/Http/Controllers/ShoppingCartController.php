@@ -12,6 +12,9 @@ use App\Mail\ListOfItemsToBuy;
 use App\Events\BuyItems;
 
 
+use App\Notifications\SendMailItemList;
+
+
 class ShoppingCartController extends Controller
 {
 
@@ -118,12 +121,18 @@ class ShoppingCartController extends Controller
             $items_in_cart =  $cart->Items;
             $user = Auth::user();
 
+           //try notification
+           
+            \Notification::send($user, new SendMailItemList($user,$items_in_cart,$cart));
+
             //fire event  to send mail to user with items in shopping cart
-            event(new BuyItems($user,$items_in_cart,$cart));
+            //event(new BuyItems($user,$items_in_cart,$cart));
         }
         return redirect()->back();
      }
 
+
+ 
 
 
 }

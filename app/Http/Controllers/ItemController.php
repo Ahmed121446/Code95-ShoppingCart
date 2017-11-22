@@ -32,11 +32,9 @@ class ItemController extends Controller
         ]);
 
 
-        //get image name
-        $filename = $_FILES['Image']['name'];
-        
-
-        
+        //get image name and add random number .
+        $filename = rand().'-'.$_FILES['Image']['name'];
+                
         $Image_Name =  $filename;
         $item_title =  $request['item_title'];
         $item_desc =  $request['item_desc'];

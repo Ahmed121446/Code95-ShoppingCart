@@ -11,7 +11,7 @@ We need to inform you that you take decision to buy Items.
 And this is the Items you choose.
  @component('mail::table')
 | Item ID   | Item Price   | Item Quantity   | Item Name   |
-|  	  :-----:   		 |    :-----:    |    :-----:    |    :--    |
+|           |              | 			     | 			   |
 @foreach ($ShoppingCartItems as $item)
 	
 		  {{$item['Item']['id']}}		  |		  {{$item['Price']}}		  |		  {{$item['HowMany']}} 		  |    {{$item['Item']['name']}}    
