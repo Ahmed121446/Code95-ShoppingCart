@@ -59,6 +59,8 @@ class AddFakeUsers extends Command
                         'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
                     ]);
                 }
+
+                 $this->info('\n You add fake users successfully');
                  
             }
         }else{
@@ -67,8 +69,7 @@ class AddFakeUsers extends Command
        
 
        
-        // $number = $this->argument('number');
-        // $this->info($number);
-        // $this->info('\ndone');
+      
+
     }
 }
